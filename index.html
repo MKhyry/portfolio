@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mohamed Khairy — Data Scientist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#f9f8f6; --bg2:#f2f1ee; --line:#e0ded9;
+      --blue:#2c5f8a; --blue-lt:#6b9bbf; --blue-xlt:#d4e5f2;
+      --blue-bg:rgba(44,95,138,.07);
+      --text:#1c2330; --muted:#6a7585; --card:#ffffff;
+      --shadow:rgba(44,95,138,.10); --accent:#c4965a;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+
+    /* ── NAV ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 4rem;display:flex;align-items:center;justify-content:space-between;background:rgba(249,248,246,.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);animation:slideDown .7s ease both}
+    .nav-logo{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.4rem;color:var(--text);letter-spacing:.02em}
+    .nav-logo span{color:var(--blue)}
+    .nav-links{display:flex;gap:2.8rem;list-style:none}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative;padding-bottom:3px}
+    .nav-links a::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+    .nav-links a:hover{color:var(--text)}
+    .nav-links a:hover::after{transform:scaleX(1)}
+    .nav-cta{background:transparent;color:var(--blue);border:1.5px solid var(--blue);padding:.5rem 1.4rem;border-radius:2px;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:all .2s}
+    .nav-cta:hover{background:var(--blue);color:#fff}
+
+    /* ── HERO ── */
+    #about{min-height:100vh;display:flex;align-items:center;background:var(--bg)}
+    #hero{max-width:1280px;margin:0 auto;padding:8rem 4rem 5rem;display:grid;grid-template-columns:1fr 420px;align-items:center;gap:6rem;width:100%}
+    .hero-content{animation:fadeUp .9s .1s ease both}
+    .hero-greeting{font-family:"DM Mono",monospace;font-size:.72rem;color:var(--accent);letter-spacing:.22em;text-transform:uppercase;margin-bottom:1.4rem;display:flex;align-items:center;gap:.8rem}
+    .hero-greeting::before{content:"";width:32px;height:1px;background:var(--accent)}
+    h1{font-family:"Cormorant Garamond",serif;font-size:clamp(3.2rem,5.5vw,5.2rem);font-weight:600;line-height:1.05;letter-spacing:-.01em;margin-bottom:.5rem;color:var(--text)}
+    h1 .name{color:var(--blue);display:block;font-style:italic}
+    .hero-role{font-family:"DM Mono",monospace;font-size:.82rem;color:var(--muted);margin-bottom:2rem;letter-spacing:.12em;text-transform:uppercase}
+    .hero-desc{font-size:1rem;color:var(--muted);max-width:500px;margin-bottom:2.8rem;line-height:1.95;border-left:2px solid var(--accent);padding-left:1.2rem}
+    .hero-cta{display:flex;gap:1.1rem;flex-wrap:wrap;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2.2rem;border-radius:2px;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .22s;border:none}
+    .btn-primary{background:var(--blue);color:#fff}
+    .btn-primary:hover{background:#1e4a6e;transform:translateY(-2px);box-shadow:0 8px 28px rgba(44,95,138,.28)}
+    .btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--line)}
+    .btn-outline:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+
+    /* ── PHOTO: clean offset-border + corner brackets ── */
+    .hero-visual{animation:fadeUp .9s .3s ease both;display:flex;justify-content:center;align-items:center}
+    .photo-stage{position:relative;width:380px;height:480px}
+
+    /* offset ghost border */
+    .photo-stage::before{
+      content:"";position:absolute;
+      top:14px;left:14px;right:-14px;bottom:-14px;
+      border:1.5px solid var(--blue-lt);
+      z-index:0;opacity:.65;pointer-events:none;
+    }
+    /* diagonal accent line top-right */
+    .photo-stage::after{
+      content:"";position:absolute;
+      top:0;right:-14px;width:1px;height:44px;
+      background:var(--accent);opacity:.6;pointer-events:none;
+    }
+
+    /* corner brackets */
+    .ph-bracket{position:absolute;width:22px;height:22px;pointer-events:none;z-index:3}
+    .ph-bracket-tl{top:-4px;left:-4px;border-top:2px solid var(--blue);border-left:2px solid var(--blue)}
+    .ph-bracket-tr{top:-4px;right:-4px;border-top:2px solid var(--accent);border-right:2px solid var(--accent)}
+    .ph-bracket-bl{bottom:-4px;left:-4px;border-bottom:2px solid var(--accent);border-left:2px solid var(--accent)}
+    .ph-bracket-br{bottom:-4px;right:-4px;border-bottom:2px solid var(--blue);border-right:2px solid var(--blue)}
+
+    .photo-frame{
+      position:absolute;inset:0;z-index:2;
+      overflow:hidden;border-radius:1px;
+      box-shadow:0 24px 56px rgba(44,95,138,.20);
+    }
+    .photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+
+    /* placeholder box (used when image not yet added via images/ folder) */
+    .photo-placeholder{
+      position:absolute;inset:0;z-index:2;
+      background:linear-gradient(160deg,#dde8f0,#eaf2f8);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;
+      font-family:"DM Mono",monospace;font-size:.68rem;color:var(--blue-lt);
+      letter-spacing:.08em;text-align:center;padding:1.4rem;
+    }
+    .photo-placeholder .ph-icon-large{font-size:2.8rem;opacity:.4}
+
+    /* ── SECTION BASE ── */
+    .section-wrap{max-width:1160px;margin:0 auto;padding:7rem 4rem}
+    .section-eyebrow{font-family:"DM Mono",monospace;font-size:.7rem;color:var(--accent);letter-spacing:.22em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem}
+    .section-eyebrow::before{content:"";width:22px;height:1px;background:var(--accent)}
+    h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:600;letter-spacing:-.01em;margin-bottom:3rem;color:var(--text)}
+    h2 em{font-style:italic;color:var(--blue)}
+    .section-alt{background:var(--bg2)}
+    .divider{border:none;border-top:1px solid var(--line);margin:0}
+
+    /* ── SKILLS: category group cards ── */
+    .skills-grid-pro{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+    .skill-group{background:var(--card);padding:2rem 2.2rem;transition:background .2s}
+    .skill-group:hover{background:#fafaf8}
+    .sg-head{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
+    .sg-num{font-family:"DM Mono",monospace;font-size:.65rem;color:var(--accent);letter-spacing:.12em}
+    .sg-title{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:600;color:var(--text)}
+    .sg-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+    .sk-tag{background:var(--blue-bg);color:var(--blue);font-family:"DM Mono",monospace;font-size:.68rem;padding:.22rem .65rem;border-radius:2px;letter-spacing:.03em;border:1px solid transparent;transition:border-color .2s}
+    .sk-tag:hover{border-color:var(--blue-lt)}
+    .sk-tag.learning{background:rgba(196,150,90,.08);color:var(--accent);border-color:rgba(196,150,90,.2)}
+
+    /* ── PROJECTS ── */
+    .project-row{background:var(--card);border:1px solid var(--line);border-radius:4px;display:grid;grid-template-columns:1fr 1fr;min-height:320px;margin-bottom:1.8rem;overflow:hidden;transition:box-shadow .25s,transform .25s}
+    .project-row:hover{box-shadow:0 14px 44px var(--shadow);transform:translateY(-3px)}
+    .project-row.coming-soon{opacity:.5;border-style:dashed}
+    .project-row.coming-soon:hover{transform:none;box-shadow:none}
+    .proj-info{padding:2.6rem 3rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--line);position:relative}
+    .proj-info::before{content:"";position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--blue),var(--accent));transform:scaleY(0);transform-origin:top;transition:transform .35s ease}
+    .project-row:hover .proj-info::before{transform:scaleY(1)}
+    .project-num{font-family:"DM Mono",monospace;font-size:.68rem;color:var(--accent);letter-spacing:.12em;margin-bottom:.9rem}
+    .project-name{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:600;margin-bottom:.8rem;color:var(--text);line-height:1.2}
+    .project-desc{color:var(--muted);font-size:.9rem;line-height:1.9;margin-bottom:1.4rem;flex:1}
+    .project-tools{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.5rem}
+    .project-link-btn{display:inline-flex;align-items:center;gap:.4rem;font-size:.76rem;font-weight:600;color:var(--blue);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:gap .2s;align-self:flex-start}
+    .project-link-btn:hover{gap:.8rem}
+    .proj-images{padding:2.4rem;display:flex;flex-direction:column;gap:1.2rem;justify-content:center;background:var(--bg2)}
+    .proj-img-frame{position:relative;flex:1;max-height:300px}
+    .proj-img-frame::before{content:"";position:absolute;top:-6px;left:-6px;right:6px;bottom:6px;border:1.5px solid var(--blue-lt);border-radius:3px;z-index:0;opacity:.7}
+    .proj-img-frame::after{content:"";position:absolute;top:6px;left:6px;right:-6px;bottom:-6px;border:1px solid var(--accent);border-radius:3px;z-index:0;opacity:.4}
+    .proj-img-inner{position:relative;z-index:1;width:100%;height:100%;background:linear-gradient(135deg,#dde8f0 0%,#eaf2f8 100%);border-radius:3px;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:120px}
+    .proj-img-inner img{width:100%;height:100%;object-fit:cover;display:block}
+    .proj-img-inner .img-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;padding:1rem;text-align:center;font-family:"DM Mono",monospace;font-size:.65rem;color:var(--blue-lt);letter-spacing:.06em;line-height:1.6}
+    .proj-img-inner .img-placeholder .ph-icon{font-size:1.6rem;opacity:.5}
+
+    /* ── EDUCATION ── */
+    .edu-card{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:2rem 2.4rem;display:flex;align-items:flex-start;gap:1.5rem;transition:all .25s}
+    .edu-card:hover{border-color:var(--blue-lt);box-shadow:0 8px 30px var(--shadow);transform:translateY(-2px)}
+    .edu-icon{width:48px;height:48px;min-width:48px;background:var(--blue-bg);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+    .edu-meta{font-family:"DM Mono",monospace;font-size:.7rem;color:var(--accent);letter-spacing:.08em;margin-bottom:.3rem}
+    .edu-title{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:600;margin-bottom:.2rem;color:var(--text)}
+    .edu-sub{color:var(--muted);font-size:.88rem;margin-bottom:.3rem}
+    .edu-gpa{font-family:"DM Mono",monospace;font-size:.76rem;color:var(--muted)}
+    .edu-bullets{list-style:none;margin-top:.6rem}
+    .edu-bullets li{color:var(--muted);font-size:.88rem;padding:.25rem 0 .25rem 1.2rem;position:relative}
+    .edu-bullets li::before{content:"—";position:absolute;left:0;color:var(--accent);font-size:.75rem}
+
+    /* ── CERTIFICATIONS ── */
+    .cert-row{background:var(--card);border:1px solid var(--line);border-radius:4px;display:grid;grid-template-columns:1fr 1fr;min-height:280px;margin-bottom:1.8rem;overflow:hidden;transition:box-shadow .25s,transform .25s}
+    .cert-row:hover{box-shadow:0 14px 44px var(--shadow);transform:translateY(-3px)}
+    .cert-info{padding:2.6rem 3rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--line);position:relative}
+    .cert-info::before{content:"";position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--accent),var(--blue));transform:scaleY(0);transform-origin:top;transition:transform .35s ease}
+    .cert-row:hover .cert-info::before{transform:scaleY(1)}
+    .cert-images{padding:2.8rem;display:flex;align-items:center;justify-content:center;background:var(--bg2)}
+    .cert-img-frame{position:relative;width:100%;max-width:450px}
+    .cert-img-frame::before{content:"";position:absolute;top:-8px;left:-8px;right:8px;bottom:8px;border:1.5px solid var(--blue-lt);border-radius:3px;z-index:0;opacity:.7}
+    .cert-img-frame::after{content:"";position:absolute;top:8px;left:8px;right:-8px;bottom:-8px;border:1px solid var(--accent);border-radius:3px;z-index:0;opacity:.4}
+    .cert-img-inner{position:relative;z-index:1;width:100%;background:linear-gradient(135deg,#dde8f0,#eaf2f8);border-radius:3px;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:180px}
+    .cert-img-inner img{width:100%;height:100%;object-fit:cover;display:block}
+    .cert-img-inner .img-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;padding:1rem;text-align:center;font-family:"DM Mono",monospace;font-size:.65rem;color:var(--blue-lt);letter-spacing:.06em;line-height:1.6}
+    .cert-img-inner .img-placeholder .ph-icon{font-size:2rem;opacity:.45}
+
+    /* ── CONTACT: elegant, no emojis ── */
+    #contact .section-wrap{text-align:center}
+    .contact-intro{color:var(--muted);font-size:1rem;max-width:480px;margin:0 auto 3rem;line-height:1.95}
+    .contact-links{display:flex;flex-direction:column;gap:.1rem;max-width:520px;margin:0 auto 3rem;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+    .contact-item{display:grid;grid-template-columns:140px 1fr;align-items:center;text-decoration:none;color:var(--text);transition:background .2s;border-bottom:1px solid var(--line)}
+    .contact-item:last-child{border-bottom:none}
+    .contact-item:hover{background:rgba(44,95,138,.04)}
+    .contact-item:hover .ci-val{color:var(--blue)}
+    .ci-label{padding:.9rem 1.4rem;font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-right:1px solid var(--line);background:var(--bg2)}
+    .ci-val{padding:.9rem 1.4rem;font-size:.88rem;font-weight:500;color:var(--text);transition:color .2s}
+
+    footer{background:var(--text);color:rgba(255,255,255,.4);text-align:center;padding:2rem;font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.06em}
+    footer span{color:var(--blue-lt)}
+
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+    @keyframes slideDown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+
+    @media(max-width:960px){
+      nav{padding:1rem 1.5rem}.nav-links{gap:1.5rem}.nav-cta{display:none}
+      #hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;gap:3rem;text-align:center}
+      .hero-greeting{justify-content:center}
+      .hero-desc{margin:0 auto 2rem;border-left:none;border-top:2px solid var(--accent);padding:1rem 0 0}
+      .hero-cta{justify-content:center}
+      .photo-stage{width:280px;height:360px}
+      .section-wrap{padding:4rem 1.5rem}
+      .project-row,.cert-row{grid-template-columns:1fr}
+      .proj-info,.cert-info{border-right:none;border-bottom:1px solid var(--line)}
+      .skills-grid-pro{grid-template-columns:1fr}
+      .contact-item{grid-template-columns:110px 1fr}
+    }
+    @media(max-width:600px){.nav-links{display:none}h1{font-size:2.8rem}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Mohamed <span>Khairy</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- ABOUT -->
+<section id="about">
+  <div id="hero">
+    <div class="hero-content">
+      <div class="hero-greeting">Open to Opportunities</div>
+      <h1>Hi, I'm<span class="name">Mohamed Khairy</span></h1>
+      <div class="hero-role">Data Scientist &amp; AI Developer</div>
+      <p class="hero-desc">Some call it overthinking; I call it perfectionism<br>Obsessed with details, I transform raw data into meaningful decisions. With a strong foundation in statistical analysis, Python programming, and data visualization, I build solutions that help businesses understand their data and act on it with confidence.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Get In Touch &#8599;</a>
+        <a href="#projects" class="btn btn-outline">View Projects</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="photo-stage">
+        <div class="ph-bracket ph-bracket-tl"></div>
+        <div class="ph-bracket ph-bracket-tr"></div>
+        <div class="ph-bracket ph-bracket-bl"></div>
+        <div class="ph-bracket ph-bracket-br"></div>
+        <!-- IMAGE GUIDE: Replace the src below with images/profile.jpg after adding the file -->
+        <div class="photo-frame">
+          <img src="images/profile.png" alt="Mohamed Khairy" onerror="this.parentElement.innerHTML='<div class=&quot;photo-placeholder&quot;><span class=&quot;ph-icon-large&quot;></span><span>profile.png</span><span>Place your photo in<br>the images/ folder</span></div>'">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills" class="section-alt">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Technical Expertise</div>
+    <h2>Skills &amp; <em>Tools</em></h2>
+    <div class="skills-grid-pro">
+
+      <div class="skill-group reveal">
+        <div class="sg-head">
+          <span class="sg-num">01</span>
+          <span class="sg-title">Programming Languages</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sk-tag">Python</span>
+          <span class="sk-tag">SQL</span>
+          <span class="sk-tag">C++</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="sg-head">
+          <span class="sg-num">02</span>
+          <span class="sg-title">Data Analysis</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sk-tag">Pandas</span>
+          <span class="sk-tag">NumPy</span>
+          <span class="sk-tag">EDA</span>
+          <span class="sk-tag">Statistics</span>
+          <span class="sk-tag">Data Cleaning</span>
+          <span class="sk-tag">Preprocessing</span>
+          <span class="sk-tag">Feature Engineering</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="sg-head">
+          <span class="sg-num">03</span>
+          <span class="sg-title">Data Visualization</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sk-tag">Matplotlib</span>
+          <span class="sk-tag">Seaborn</span>
+          <span class="sk-tag">Plotly</span>
+          <span class="sk-tag">Storytelling with Data</span>
+          <span class="sk-tag">Dashboard Design</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="sg-head">
+          <span class="sg-num">04</span>
+          <span class="sg-title">Tools &amp; Platforms</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sk-tag">Excel</span>
+          <span class="sk-tag">Jupyter Notebook</span>
+          <span class="sk-tag">VS Code</span>
+          <span class="sk-tag">Git &amp; GitHub</span>
+          <span class="sk-tag">Kaggle</span>
+          <span class="sk-tag">Google Colab</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="sg-head">
+          <span class="sg-num">05</span>
+          <span class="sg-title">Web Scraping &amp; APIs</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sk-tag">BeautifulSoup</span>
+          <span class="sk-tag">Selenium</span>
+          <span class="sk-tag">Requests</span>
+          <span class="sk-tag">REST APIs</span>
+          <span class="sk-tag">JSON Handling</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="sg-head">
+          <span class="sg-num">06</span>
+          <span class="sg-title">Currently Learning</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sk-tag learning">Machine Learning</span>
+          <span class="sk-tag learning">Scikit-learn</span>
+          <span class="sk-tag learning">Deep Learning</span>
+          <span class="sk-tag learning">TensorFlow</span>
+          <span class="sk-tag learning">Computer Vision</span>
+          <span class="sk-tag learning">NLP</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="sg-head">
+          <span class="sg-num">07</span>
+          <span class="sg-title">Problem Solving</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sk-tag">Analytical Thinking</span>
+          <span class="sk-tag">Critical Analysis</span>
+          <span class="sk-tag">Research</span>
+          <span class="sk-tag">Documentation</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="sg-head">
+          <span class="sg-num">08</span>
+          <span class="sg-title">Languages</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sk-tag">Arabic — Native</span>
+          <span class="sk-tag">English — Professional</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Selected Work</div>
+    <h2>Featured <em>Projects</em></h2>
+
+
+    <div class="project-row reveal">
+      <div class="proj-info">
+        <div class="project-num">01 — Web Scraping &amp; Analytics</div>
+        <div class="project-name">E-Commerce Price Tracker</div>
+        <p class="project-desc">Built a web crawler collecting data on 1,000 products across 20 categories from an online bookstore. Analysis reveals pricing structures, the relationship between ratings and price points, and availability patterns across categories.</p>
+        <div class="project-tools">
+          <span class="sk-tag">Python</span><span class="sk-tag">Pandas</span>
+          <span class="sk-tag">BeautifulSoup</span><span class="sk-tag">Matplotlib</span>
+          <span class="sk-tag">Seaborn</span>
+        </div>
+        <a href="https://github.com/MKhyry/web-scraping-projects/tree/main/ecommerce-price-tracker" target="_blank" class="project-link-btn">View on GitHub &#8599;</a>
+      </div>
+      <div class="proj-images">
+        <!-- IMAGE GUIDE: proj3-img1.png = Price distribution, proj3-img2.png = Rating vs Price -->
+        <div class="proj-img-frame">
+          <div class="proj-img-inner">
+            <img src="images/proj3-img1.png" alt="Price Distribution" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>proj3-img1.png<br>Price Distribution</div>'">
+          </div>
+        </div>
+        <div class="proj-img-frame">
+          <div class="proj-img-inner">
+            <img src="images/proj3-img2.png" alt="Rating vs Price" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>proj3-img2.png<br>Rating vs Price</div>'">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="project-row reveal">
+      <div class="proj-info">
+        <div class="project-num">02 — Web Scraping &amp; Analytics</div>
+        <div class="project-name">Job Market Analysis</div>
+        <p class="project-desc">Engineered a data pipeline that scrapes live remote job listings for data roles via the RemoteOK API, then performs in-depth market analysis to surface demand trends, top-required skills, and salary benchmarks across positions.</p>
+        <div class="project-tools">
+          <span class="sk-tag">Python</span><span class="sk-tag">Pandas</span>
+          <span class="sk-tag">Requests</span><span class="sk-tag">Matplotlib</span>
+          <span class="sk-tag">Seaborn</span>
+        </div>
+        <a href="https://github.com/MKhyry/web-scraping-projects/tree/main/job-market-analysis" target="_blank" class="project-link-btn">View on GitHub &#8599;</a>
+      </div>
+      <div class="proj-images">
+        <!-- IMAGE GUIDE: proj2-img1.png = Job demand chart, proj2-img2.png = Salary chart -->
+        <div class="proj-img-frame">
+          <div class="proj-img-inner">
+            <img src="images/proj2-img1.png" alt="Job Demand" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>proj2-img1.png<br>Job Demand Chart</div>'">
+          </div>
+        </div>
+        <div class="proj-img-frame">
+          <div class="proj-img-inner">
+            <img src="images/proj2-img2.png" alt="Salary Comparison" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>proj2-img2.png<br>Salary Comparison</div>'">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-row reveal">
+      <div class="proj-info">
+        <div class="project-num">03 — Data Analysis</div>
+        <div class="project-name">Data Analysis Mini Projects</div>
+        <p class="project-desc">A curated collection of end-to-end data analysis projects using real-world datasets. Each project defines a clear analytical question, applies rigorous data processing, and concludes with actionable insights.</p>
+        <ul class="project-desc" style="margin: 0 0 14px 18px; padding: 0; font-size:0.88rem;">
+          <li>Netflix Dataset — content distribution trends, regional production patterns, genre analysis</li>
+          <li>Airlines Dataset — fare pricing dynamics, route analysis, on-time performance patterns</li>
+        </ul>        <div class="project-tools">
+          <span class="sk-tag">Python</span><span class="sk-tag">Pandas</span>
+          <span class="sk-tag">NumPy</span><span class="sk-tag">Matplotlib</span>
+          <span class="sk-tag">Jupyter Notebook</span>
+        </div>
+        <a href="https://github.com/MKhyry/Data-Analysis-mini-projects" target="_blank" class="project-link-btn">View on GitHub &#8599;</a>
+      </div>
+      <div class="proj-images">
+        <!-- IMAGE GUIDE: proj1-img1.png = Netflix chart, proj1-img2.png = Airlines chart -->
+        <div class="proj-img-frame">
+          <div class="proj-img-inner">
+            <img src="images/proj1-img1.png" alt="Netflix Analysis" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>proj1-img1.png<br>Netflix Analysis Chart</div>'">
+          </div>
+        </div>
+        <div class="proj-img-frame">
+          <div class="proj-img-inner">
+            <img src="images/proj1-img2.png" alt="Airlines Analysis" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>proj1-img2.png<br>Airlines Analysis Chart</div>'">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-row coming-soon reveal">
+      <div class="proj-info">
+        <div class="project-num">04 — Coming Soon</div>
+        <div class="project-name">Machine Learning Project</div>
+        <p class="project-desc">Currently developing a predictive modeling project. Stay tuned for updates.</p>
+      </div>
+      <div class="proj-images" style="align-items:center;justify-content:center">
+        <div style="font-family:'DM Mono',monospace;font-size:.75rem;color:var(--blue-lt);letter-spacing:.1em">IN PROGRESS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EDUCATION -->
+<section id="education" class="section-alt">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Academic Background</div>
+    <h2><em>Education</em></h2>
+    <div class="edu-card reveal">
+      <div class="edu-icon">&#127891;</div>
+      <div class="edu-body">
+        <div class="edu-meta">2023 — 2028 &nbsp;·&nbsp; Tanta, Egypt</div>
+        <div class="edu-title">B.Sc. in Computer Science</div>
+        <div class="edu-sub">Faculty of Engineering &middot; Tanta University</div>
+        <div class="edu-gpa">GPA: 3.86 / 4.0</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CERTIFICATIONS -->
+<section id="courses">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Professional Development</div>
+    <h2><em>Certifications</em></h2>
+
+    <div class="cert-row reveal">
+      <div class="cert-info">
+        <div class="edu-meta">July 2025 &nbsp;·&nbsp; DataCamp <br> 36 Hours &nbsp; ·&nbsp; 9 Courses &nbsp;·&nbsp; 5 Projects</div>
+        <div class="project-name">Data Analyst in Python</div>
+        <p class="project-desc" style="margin-bottom:1.2rem">Comprehensive, project-based certification covering the full data analysis workflow — from raw data ingestion to statistical reasoning and visual storytelling.</p>
+        <ul class="edu-bullets" style="margin-bottom:1.4rem">
+          <li>Applied Python, Pandas, and NumPy to analyze real-world datasets end-to-end.</li>
+          <li>Performed full data cleaning, transformation, and exploratory analysis pipelines.</li>
+          <li>Built publication-quality visualizations to support data-driven decisions.</li>
+        </ul>
+        <a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/0233a0ae22987c50c06e1553b9948d56230ff7be" target="_blank" class="project-link-btn">View Accomplishment &#8599;</a>
+      </div>
+      <div class="cert-images">
+        <!-- IMAGE GUIDE: cert1.png = screenshot of your DataCamp certificate -->
+        <div class="cert-img-frame">
+          <div class="cert-img-inner">
+            <img src="images/cert1.png" alt="Certificate" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128220;</span>cert1.png<br>Screenshot of your<br>DataCamp certificate</div>'">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-row reveal">
+      <div class="cert-info">
+        <div class="edu-meta">July 2025 &nbsp;·&nbsp; DataCamp <br> 28 Hours &nbsp; ·&nbsp; 7 Courses &nbsp;·&nbsp; 2 Projects</div>
+        <div class="project-name">Python Data Fundamentals</div>
+        <p class="project-desc" style="margin-bottom:1.2rem">Core Python and data science foundations track — the essential groundwork for professional data analysis work.</p>
+        <ul class="edu-bullets" style="margin-bottom:1.4rem">
+          <li>Mastered Python fundamentals: data types, control structures, functions, and OOP basics.</li>
+          <li>Learned data loading, merging, and foundational visualization techniques.</li>
+          <li>Built a solid base in data manipulation, descriptive statistics, and EDA.</li>
+        </ul>
+        <a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/2a6b568d310790c86930b6647e8b92152ce87d10" target="_blank" class="project-link-btn">View Accomplishment &#8599;</a>
+      </div>
+      <div class="cert-images">
+        <!-- IMAGE GUIDE: cert2.png = screenshot of your DataCamp certificate -->
+        <div class="cert-img-frame">
+          <div class="cert-img-inner">
+            <img src="images/cert2.png" alt="Certificate" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128220;</span>cert2.png<br>Screenshot of your<br>DataCamp certificate</div>'">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact" class="section-alt">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Let's Connect</div>
+    <h2>Get In <em>Touch</em></h2>
+    <p class="contact-intro">I'm actively seeking internships, collaborative projects, and opportunities to contribute. Whether you have a role in mind or a dataset that needs a second set of eyes — I'd love to hear from you.</p>
+    <div class="contact-links">
+      <a class="contact-item" id="email-link">
+        <span class="ci-label">Email</span>
+        <span class="ci-val" id="email-text"></span>
+      </a>
+      <a href="https://linkedin.com/in/mkhyry" target="_blank" class="contact-item">
+        <span class="ci-label">LinkedIn</span>
+        <span class="ci-val">linkedin.com/in/mkhyry</span>
+      </a>
+      <a href="https://github.com/MKhyry" target="_blank" class="contact-item">
+        <span class="ci-label">GitHub</span>
+        <span class="ci-val">github.com/MKhyry</span>
+      </a>
+      <a href="tel:+201055233885" class="contact-item">
+        <span class="ci-label">Phone</span>
+        <span class="ci-val">+20 105 523 3885</span>
+      </a>
+    </div>
+    <button class="btn btn-primary" id="send-btn" style="font-size:.82rem;padding:.9rem 2.6rem;letter-spacing:.1em">Send a Message &#8599;</button>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; Built by <span>Mohamed Khairy</span></p>
+</footer>
+
+<script>
+(function(){
+  var u=["mhmdkhyry",".work","@","gmail",".com"].join("");
+  var el=document.getElementById("email-link");
+  var tx=document.getElementById("email-text");
+  if(el)el.href="mailto:"+u;
+  if(tx)tx.textContent=u;
+  var btn=document.getElementById("send-btn");
+  if(btn)btn.addEventListener("click",function(){window.location.href="mailto:"+u;});
+})();
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e,i){
+    if(e.isIntersecting){e.target.style.transitionDelay=(i*.08)+"s";e.target.classList.add("visible");obs.unobserve(e.target);}
+  });
+},{threshold:.08});
+document.querySelectorAll(".reveal").forEach(function(el){obs.observe(el);});
+var secs=document.querySelectorAll("section[id]");
+var navLinks=document.querySelectorAll(".nav-links a");
+window.addEventListener("scroll",function(){
+  var cur="";
+  secs.forEach(function(s){if(window.scrollY>=s.offsetTop-180)cur=s.id;});
+  navLinks.forEach(function(a){a.style.color=a.getAttribute("href")==="#"+cur?"var(--blue)":"";});
+});
+</script>
+</body>
+</html>
