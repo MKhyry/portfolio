@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mohamed Khairy — Data Scientist</title>
+  <title>Mohamed Khairy — Data Engineer &amp; Scientist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -99,7 +99,7 @@
     .divider{border:none;border-top:1px solid var(--line);margin:0}
 
     /* ── SKILLS: category group cards ── */
-    .skills-grid-pro{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+    .skills-grid-pro{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
     .skill-group{background:var(--card);padding:2rem 2.2rem;transition:background .2s}
     .skill-group:hover{background:#fafaf8}
     .sg-head{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
@@ -179,6 +179,9 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
     @keyframes slideDown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
 
+    @media(max-width:1100px) and (min-width:961px){
+      .skills-grid-pro{grid-template-columns:repeat(2,1fr)}
+    }
     @media(max-width:960px){
       nav{padding:1rem 1.5rem}.nav-links{gap:1.5rem}.nav-cta{display:none}
       #hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;gap:3rem;text-align:center}
@@ -216,8 +219,8 @@
     <div class="hero-content">
       <div class="hero-greeting">Open to Opportunities</div>
       <h1>Hi, I'm<span class="name">Mohamed Khairy</span></h1>
-      <div class="hero-role">Data Scientist &amp; AI Developer</div>
-      <p class="hero-desc">Some call it overthinking; I call it perfectionism<br>Obsessed with details, I transform raw data into meaningful decisions. With a strong foundation in statistical analysis, Python programming, and data visualization, I build solutions that help businesses understand their data and act on it with confidence.</p>
+      <div class="hero-role">Data Engineer &amp; Scientist</div>
+      <p class="hero-desc">Some call it overthinking; I call it perfectionism<br>I work across the full data lifecycle — engineering the pipelines that collect, move, and store data at scale with Spark, Kafka, and Hadoop, then applying data science and AI to turn that data into models and insights that drive real decisions. From distributed systems to machine learning, I care about building data infrastructure that's as reliable as the analysis it powers.</p>
       <div class="hero-cta">
         <a href="#contact" class="btn btn-primary">Get In Touch &#8599;</a>
         <a href="#projects" class="btn btn-outline">View Projects</a>
@@ -250,105 +253,126 @@
       <div class="skill-group reveal">
         <div class="sg-head">
           <span class="sg-num">01</span>
-          <span class="sg-title">Programming Languages</span>
+          <span class="sg-title">Programming</span>
         </div>
         <div class="sg-tags">
           <span class="sk-tag">Python</span>
           <span class="sk-tag">SQL</span>
-          <span class="sk-tag">C++</span>
+          <span class="sk-tag">HiveQL</span>
         </div>
       </div>
 
       <div class="skill-group reveal">
         <div class="sg-head">
           <span class="sg-num">02</span>
-          <span class="sg-title">Data Analysis</span>
+          <span class="sg-title">Data Engineering &amp; Big Data</span>
         </div>
         <div class="sg-tags">
-          <span class="sk-tag">Pandas</span>
-          <span class="sk-tag">NumPy</span>
-          <span class="sk-tag">EDA</span>
-          <span class="sk-tag">Statistics</span>
-          <span class="sk-tag">Data Cleaning</span>
-          <span class="sk-tag">Preprocessing</span>
-          <span class="sk-tag">Feature Engineering</span>
+          <span class="sk-tag">Apache Spark</span>
+          <span class="sk-tag">Apache Kafka</span>
+          <span class="sk-tag">Hadoop/HDFS</span>
+          <span class="sk-tag">Apache Hive</span>
+          <span class="sk-tag">ETL/ELT Pipeline</span>
+          <span class="sk-tag">Data Warehousing</span>
+          <span class="sk-tag">Distributed Systems</span>
+          <span class="sk-tag">Batch &amp; Real-Time Processing</span>
         </div>
       </div>
 
       <div class="skill-group reveal">
         <div class="sg-head">
           <span class="sg-num">03</span>
-          <span class="sg-title">Data Visualization</span>
+          <span class="sg-title">Databases &amp; Data Modeling</span>
         </div>
         <div class="sg-tags">
-          <span class="sk-tag">Matplotlib</span>
-          <span class="sk-tag">Seaborn</span>
-          <span class="sk-tag">Plotly</span>
-          <span class="sk-tag">Storytelling with Data</span>
-          <span class="sk-tag">Dashboard Design</span>
+          <span class="sk-tag">MySQL</span>
+          <span class="sk-tag">PostgreSQL</span>
+          <span class="sk-tag">SQLAlchemy</span>
+          <span class="sk-tag">Alembic</span>
+          <span class="sk-tag">Database Design</span>
+          <span class="sk-tag">Data Modeling</span>
+          <span class="sk-tag">Schema Design</span>
         </div>
       </div>
 
       <div class="skill-group reveal">
         <div class="sg-head">
           <span class="sg-num">04</span>
-          <span class="sg-title">Tools &amp; Platforms</span>
+          <span class="sg-title">Machine Learning &amp; AI</span>
         </div>
         <div class="sg-tags">
-          <span class="sk-tag">Excel</span>
-          <span class="sk-tag">Jupyter Notebook</span>
-          <span class="sk-tag">VS Code</span>
-          <span class="sk-tag">Git &amp; GitHub</span>
-          <span class="sk-tag">Kaggle</span>
-          <span class="sk-tag">Google Colab</span>
+          <span class="sk-tag">Machine Learning</span>
+          <span class="sk-tag">Computer Vision</span>
+          <span class="sk-tag">RAG</span>
+          <span class="sk-tag">LLMs</span>
+          <span class="sk-tag">Generative AI</span>
+          <span class="sk-tag">Prompt Engineering</span>
+          <span class="sk-tag">MLOps</span>
+          <span class="sk-tag">FAISS</span>
         </div>
       </div>
 
       <div class="skill-group reveal">
         <div class="sg-head">
           <span class="sg-num">05</span>
-          <span class="sg-title">Web Scraping &amp; APIs</span>
+          <span class="sg-title">Libraries</span>
         </div>
         <div class="sg-tags">
+          <span class="sk-tag">Pandas</span>
+          <span class="sk-tag">NumPy</span>
+          <span class="sk-tag">Matplotlib</span>
+          <span class="sk-tag">Seaborn</span>
           <span class="sk-tag">BeautifulSoup</span>
-          <span class="sk-tag">Selenium</span>
-          <span class="sk-tag">Requests</span>
-          <span class="sk-tag">REST APIs</span>
-          <span class="sk-tag">JSON Handling</span>
+          <span class="sk-tag">scikit-learn</span>
+          <span class="sk-tag">PySpark</span>
+          <span class="sk-tag">kafka-python</span>
         </div>
       </div>
 
       <div class="skill-group reveal">
         <div class="sg-head">
           <span class="sg-num">06</span>
-          <span class="sg-title">Currently Learning</span>
+          <span class="sg-title">Data Skills</span>
         </div>
         <div class="sg-tags">
-          <span class="sk-tag learning">Machine Learning</span>
-          <span class="sk-tag learning">Scikit-learn</span>
-          <span class="sk-tag learning">Deep Learning</span>
-          <span class="sk-tag learning">TensorFlow</span>
-          <span class="sk-tag learning">Computer Vision</span>
-          <span class="sk-tag learning">NLP</span>
+          <span class="sk-tag">Data Cleaning &amp; Preprocessing</span>
+          <span class="sk-tag">Data Visualization</span>
+          <span class="sk-tag">Web Scraping</span>
         </div>
       </div>
 
       <div class="skill-group reveal">
         <div class="sg-head">
           <span class="sg-num">07</span>
-          <span class="sg-title">Problem Solving</span>
+          <span class="sg-title">Backend &amp; APIs</span>
         </div>
         <div class="sg-tags">
-          <span class="sk-tag">Analytical Thinking</span>
-          <span class="sk-tag">Critical Analysis</span>
-          <span class="sk-tag">Research</span>
-          <span class="sk-tag">Documentation</span>
+          <span class="sk-tag">FastAPI</span>
+          <span class="sk-tag">JWT</span>
+          <span class="sk-tag">RBAC &amp; Multi-Tenancy Architecture</span>
         </div>
       </div>
 
       <div class="skill-group reveal">
         <div class="sg-head">
           <span class="sg-num">08</span>
+          <span class="sg-title">Tools &amp; Platforms</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sk-tag">Git</span>
+          <span class="sk-tag">GitHub</span>
+          <span class="sk-tag">Jupyter Notebook</span>
+          <span class="sk-tag">Google Colab</span>
+          <span class="sk-tag">Kaggle</span>
+          <span class="sk-tag">Docker</span>
+          <span class="sk-tag">pytest</span>
+          <span class="sk-tag">Power BI</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="sg-head">
+          <span class="sg-num">09</span>
           <span class="sg-title">Languages</span>
         </div>
         <div class="sg-tags">
@@ -372,54 +396,26 @@
 
     <div class="project-row reveal">
       <div class="proj-info">
-        <div class="project-num">01 — Web Scraping &amp; Analytics</div>
-        <div class="project-name">E-Commerce Price Tracker</div>
-        <p class="project-desc">Built a web crawler collecting data on 1,000 products across 20 categories from an online bookstore. Analysis reveals pricing structures, the relationship between ratings and price points, and availability patterns across categories.</p>
+        <div class="project-num">01 — Big Data Engineering</div>
+        <div class="project-name">Smart City Big Data Pipeline &amp; Real-Time Analytics</div>
+        <p class="project-desc">Architected an end-to-end ETL pipeline unifying four independent urban data domains — traffic, weather, transit, and incidents — under shared zone and time dimensions. Built a real-time Kafka ingestion layer feeding a Spark Structured Streaming job that writes checkpointed Parquet output to HDFS, exposed via Hive external tables, plus a Spark batch layer producing cross-domain analytical datasets visualized in an interactive Power BI dashboard.</p>
         <div class="project-tools">
-          <span class="sk-tag">Python</span><span class="sk-tag">Pandas</span>
-          <span class="sk-tag">BeautifulSoup</span><span class="sk-tag">Matplotlib</span>
-          <span class="sk-tag">Seaborn</span>
+          <span class="sk-tag">Python</span><span class="sk-tag">Apache Kafka</span>
+          <span class="sk-tag">Apache Spark</span><span class="sk-tag">Hadoop/HDFS</span>
+          <span class="sk-tag">Apache Hive</span><span class="sk-tag">Power BI</span>
         </div>
-        <a href="https://github.com/MKhyry/web-scraping-projects/tree/main/ecommerce-price-tracker" target="_blank" class="project-link-btn">View on GitHub &#8599;</a>
+        <a href="https://github.com/MKhyry/smart-city-big-data-pipeline" target="_blank" class="project-link-btn">View on GitHub &#8599;</a>
       </div>
       <div class="proj-images">
-        <!-- IMAGE GUIDE: proj3-img1.png = Price distribution, proj3-img2.png = Rating vs Price -->
+        <!-- IMAGE GUIDE: smart-city-pipeline-1.png = pipeline/architecture diagram, smart-city-pipeline-2.png = Power BI dashboard screenshot -->
         <div class="proj-img-frame">
           <div class="proj-img-inner">
-            <img src="images/proj3-img1.png" alt="Price Distribution" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>proj3-img1.png<br>Price Distribution</div>'">
+            <img src="images/smart-city-pipeline-1.png" alt="Smart City Pipeline Architecture" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>smart-city-pipeline-1.png<br>Pipeline Architecture</div>'">
           </div>
         </div>
         <div class="proj-img-frame">
           <div class="proj-img-inner">
-            <img src="images/proj3-img2.png" alt="Rating vs Price" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>proj3-img2.png<br>Rating vs Price</div>'">
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="project-row reveal">
-      <div class="proj-info">
-        <div class="project-num">02 — Web Scraping &amp; Analytics</div>
-        <div class="project-name">Job Market Analysis</div>
-        <p class="project-desc">Engineered a data pipeline that scrapes live remote job listings for data roles via the RemoteOK API, then performs in-depth market analysis to surface demand trends, top-required skills, and salary benchmarks across positions.</p>
-        <div class="project-tools">
-          <span class="sk-tag">Python</span><span class="sk-tag">Pandas</span>
-          <span class="sk-tag">Requests</span><span class="sk-tag">Matplotlib</span>
-          <span class="sk-tag">Seaborn</span>
-        </div>
-        <a href="https://github.com/MKhyry/web-scraping-projects/tree/main/job-market-analysis" target="_blank" class="project-link-btn">View on GitHub &#8599;</a>
-      </div>
-      <div class="proj-images">
-        <!-- IMAGE GUIDE: proj2-img1.png = Job demand chart, proj2-img2.png = Salary chart -->
-        <div class="proj-img-frame">
-          <div class="proj-img-inner">
-            <img src="images/proj2-img1.png" alt="Job Demand" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>proj2-img1.png<br>Job Demand Chart</div>'">
-          </div>
-        </div>
-        <div class="proj-img-frame">
-          <div class="proj-img-inner">
-            <img src="images/proj2-img2.png" alt="Salary Comparison" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>proj2-img2.png<br>Salary Comparison</div>'">
+            <img src="images/smart-city-pipeline-2.png" alt="Smart City Power BI Dashboard" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>smart-city-pipeline-2.png<br>Power BI Dashboard</div>'">
           </div>
         </div>
       </div>
@@ -427,44 +423,67 @@
 
     <div class="project-row reveal">
       <div class="proj-info">
-        <div class="project-num">03 — Data Analysis</div>
-        <div class="project-name">Data Analysis Mini Projects</div>
-        <p class="project-desc">A curated collection of end-to-end data analysis projects using real-world datasets. Each project defines a clear analytical question, applies rigorous data processing, and concludes with actionable insights.</p>
-        <ul class="project-desc" style="margin: 0 0 14px 18px; padding: 0; font-size:0.88rem;">
-          <li>Netflix Dataset — content distribution trends, regional production patterns, genre analysis</li>
-          <li>Airlines Dataset — fare pricing dynamics, route analysis, on-time performance patterns</li>
-        </ul>        <div class="project-tools">
-          <span class="sk-tag">Python</span><span class="sk-tag">Pandas</span>
-          <span class="sk-tag">NumPy</span><span class="sk-tag">Matplotlib</span>
-          <span class="sk-tag">Jupyter Notebook</span>
+        <div class="project-num">02 — Full-Stack AI Engineering</div>
+        <div class="project-name">AI-Powered Smart Attendance System</div>
+        <p class="project-desc">Led a full RBAC &amp; multi-tenancy refactor, designing an organization-scoped database schema and data isolation across the database, auth, and frontend layers. Built a facial-recognition data pipeline (RetinaFace, ArcFace/InsightFace) with FAISS vector indexing for real-time identification and liveness checks, and engineered a RAG chatbot on LLaMA 3 (Groq) enabling natural-language queries over attendance data. Conducted a security audit, fixing cross-tenant data leaks, a DoS vector, and a prompt-injection risk.</p>
+        <div class="project-tools">
+          <span class="sk-tag">FastAPI</span><span class="sk-tag">React</span>
+          <span class="sk-tag">PostgreSQL</span><span class="sk-tag">FAISS</span>
+          <span class="sk-tag">InsightFace</span><span class="sk-tag">LLaMA 3</span>
+          <span class="sk-tag">Docker</span>
         </div>
-        <a href="https://github.com/MKhyry/Data-Analysis-mini-projects" target="_blank" class="project-link-btn">View on GitHub &#8599;</a>
+        <a href="https://github.com/MKhyry/ai-smart-attendance-system" target="_blank" class="project-link-btn">View on GitHub &#8599;</a>
       </div>
       <div class="proj-images">
-        <!-- IMAGE GUIDE: proj1-img1.png = Netflix chart, proj1-img2.png = Airlines chart -->
+        <!-- IMAGE GUIDE: smart-attendance-1.png = facial recognition/live demo screenshot, smart-attendance-2.png = dashboard/UI screenshot -->
         <div class="proj-img-frame">
           <div class="proj-img-inner">
-            <img src="images/proj1-img1.png" alt="Netflix Analysis" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>proj1-img1.png<br>Netflix Analysis Chart</div>'">
+            <img src="images/smart-attendance-1.png" alt="Smart Attendance Facial Recognition" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>smart-attendance-1.png<br>Facial Recognition Demo</div>'">
           </div>
         </div>
         <div class="proj-img-frame">
           <div class="proj-img-inner">
-            <img src="images/proj1-img2.png" alt="Airlines Analysis" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>proj1-img2.png<br>Airlines Analysis Chart</div>'">
+            <img src="images/smart-attendance-2.png" alt="Smart Attendance Dashboard" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>smart-attendance-2.png<br>Dashboard UI</div>'">
           </div>
         </div>
       </div>
     </div>
 
+    <div class="project-row reveal">
+      <div class="proj-info">
+        <div class="project-num">03 — Computer Vision</div>
+        <div class="project-name">Egyptian Landmark Recognition System</div>
+        <p class="project-desc">Built an end-to-end CLIP ViT-B/32 recognition pipeline indexing 981 images across 26 Egyptian landmarks, with a cosine-similarity matching engine using max-aggregation and a tunable confidence threshold. Engineered a FastAPI backend with an async MongoDB data layer, deployed on Railway with automated health checks, and prototyped an XAI attention-rollout visualization in Colab to interpret transformer focus regions.</p>
+        <div class="project-tools">
+          <span class="sk-tag">PyTorch</span><span class="sk-tag">CLIP</span>
+          <span class="sk-tag">FastAPI</span><span class="sk-tag">MongoDB</span>
+          <span class="sk-tag">Next.js</span><span class="sk-tag">TypeScript</span>
+        </div>
+        <a href="https://github.com/MKhyry/egyptian-landmark-recognition" target="_blank" class="project-link-btn">View on GitHub &#8599;</a>
+      </div>
+      <div class="proj-images">
+        <!-- IMAGE GUIDE: landmark-recognition-1.png = recognition result/UI screenshot, landmark-recognition-2.png = attention-rollout visualization -->
+        <div class="proj-img-frame">
+          <div class="proj-img-inner">
+            <img src="images/landmark-recognition-1.png" alt="Egyptian Landmark Recognition Result" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>landmark-recognition-1.png<br>Recognition Result</div>'">
+          </div>
+        </div>
+        <div class="proj-img-frame">
+          <div class="proj-img-inner">
+            <img src="images/landmark-recognition-2.png" alt="Landmark Attention Rollout Visualization" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128202;</span>landmark-recognition-2.png<br>Attention Rollout Viz</div>'">
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="project-row coming-soon reveal">
       <div class="proj-info">
         <div class="project-num">04 — Coming Soon</div>
-        <div class="project-name">Machine Learning Project</div>
-        <p class="project-desc">Currently developing a predictive modeling project. Stay tuned for updates.</p>
+        <div class="project-name">Data Engineering Project</div>
+        <p class="project-desc">Currently developing a full pipeline. Stay tuned for updates.</p>
       </div>
       <div class="proj-images" style="align-items:center;justify-content:center">
         <div style="font-family:'DM Mono',monospace;font-size:.75rem;color:var(--blue-lt);letter-spacing:.1em">IN PROGRESS</div>
-      </div>
-    </div>
+      </div>    
   </div>
 </section>
 
@@ -481,7 +500,7 @@
         <div class="edu-meta">2023 — 2028 &nbsp;·&nbsp; Tanta, Egypt</div>
         <div class="edu-title">B.Sc. in Computer Science</div>
         <div class="edu-sub">Faculty of Engineering &middot; Tanta University</div>
-        <div class="edu-gpa">GPA: 3.86 / 4.0</div>
+        <div class="edu-gpa">GPA: 3.89 / 4.0</div>
       </div>
     </div>
   </div>
@@ -494,6 +513,46 @@
   <div class="section-wrap">
     <div class="section-eyebrow">Professional Development</div>
     <h2><em>Certifications</em></h2>
+
+    <div class="cert-row reveal">
+      <div class="cert-info">
+        <div class="edu-meta">Aug 2026 &nbsp;·&nbsp; NTI &amp; ITIDA <br> 90 Hours + 30 Hours Soft Skills</div>
+        <div class="project-name">Big Data Analysis Track</div>
+        <p class="project-desc" style="margin-bottom:1.2rem">A 90-hour technical training program on the Hadoop/Spark big data ecosystem, preparing for the Huawei HCIA-Big Data certification exam (H13-711).</p>
+        <ul class="edu-bullets" style="margin-bottom:1.4rem">
+          <li>Gained hands-on experience with HDFS, MapReduce &amp; YARN, Hive, HBase, Spark, Flink, Kafka, Flume, and Zookeeper through virtualization-based labs.</li>
+          <li>Completed an additional 30 hours of labor market / freelance soft skills training as part of the initiative.</li>
+        </ul>
+      </div>
+      <div class="cert-images">
+        <!-- IMAGE GUIDE: cert-nti-bigdata.png = screenshot of your NTI/ITIDA Big Data certificate -->
+        <div class="cert-img-frame">
+          <div class="cert-img-inner">
+            <img src="images/cert-nti-bigdata.png" alt="Big Data Analysis Track Certificate" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128220;</span>cert-nti-bigdata</div>'">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-row reveal">
+      <div class="cert-info">
+        <div class="edu-meta">Dec 2025 – Jul 2026 &nbsp;·&nbsp; DEPI, by IBM <br> AI &amp; Data Science Track &nbsp;·&nbsp; 8-Month Program</div>
+        <div class="project-name">Data Scientist Track</div>
+        <p class="project-desc" style="margin-bottom:1.2rem">An 8-month, IBM-designed curriculum spanning the full data workflow — data collection, Python for Data Science, Databases and SQL, Data Analysis, Data Visualization, and Machine Learning with Python.</p>
+        <ul class="edu-bullets" style="margin-bottom:1.4rem">
+          <li>Applied MLOps tooling (MLflow, Hugging Face) and prompt engineering techniques in a hands-on Capstone Project, translating processed data into deployable ML solutions.</li>
+          <li>Completed parallel coursework in leadership, entrepreneurship, freelancing, and professional English communication.</li>
+        </ul>
+      </div>
+      <div class="cert-images">
+        <!-- IMAGE GUIDE: cert-depi-datascientist.png = screenshot of your DEPI Data Scientist certificate -->
+        <div class="cert-img-frame">
+          <div class="cert-img-inner">
+            <img src="images/cert-depi-datascientist.png" alt="Data Scientist Track Certificate" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><span class=&quot;ph-icon&quot;>&#128220;</span>cert-depi-datascientist</div>'">
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="cert-row reveal">
       <div class="cert-info">
@@ -564,7 +623,7 @@
       </a>
       <a href="tel:+201055233885" class="contact-item">
         <span class="ci-label">Phone</span>
-        <span class="ci-val">+20 105 523 3885</span>
+        <span class="ci-val">+20 109 298 5661</span>
       </a>
     </div>
     <button class="btn btn-primary" id="send-btn" style="font-size:.82rem;padding:.9rem 2.6rem;letter-spacing:.1em">Send a Message &#8599;</button>
